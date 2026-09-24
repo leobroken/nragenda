@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Painel de Gestão - NRAgenda</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="bg-slate-50 text-slate-800 font-sans antialiased flex h-screen overflow-hidden">
+
+    <!-- Sidebar Lateral -->
+    <aside class="w-64 bg-slate-900 border-r border-slate-800 flex flex-col justify-between hidden md:flex">
+        <div class="p-6 space-y-8">
+            <div class="flex items-center space-x-3">
+                <div class="bg-indigo-600 text-white p-2.5 rounded-xl font-bold shadow-lg shadow-indigo-600/30">
+                    <i class="fa-solid fa-scissors"></i>
+                </div>
+                <span class="text-xl font-extrabold text-white tracking-tight">NR<span class="text-indigo-500">Agenda</span></span>
+            </div>
+            <nav class="space-y-1.5 text-sm font-medium">
+                <button onclick="switchTab('agenda')" id="btn-agenda" class="w-full flex items-center space-x-3 px-4 py-3 rounded-xl bg-indigo-600 text-white font-semibold transition shadow-md shadow-indigo-600/20">
+                    <i class="fa-solid fa-calendar-days w-5"></i>
+                    <span>Agenda</span>
+                </button>
+                <button onclick="switchTab('clientes')" id="btn-clientes" class="w-full flex items-center space-x-3 px-4 py-3 rounded-xl text-slate-400 hover:bg-slate-800 hover:text-white transition">
+                    <i class="fa-solid fa-users w-5"></i>
+                    <span>Clientes</span>
+                </button>
+                <button onclick="switchTab('produtos')" id="btn-produtos" class="w-full flex items-center space-x-3 px-4 py-3 rounded-xl text-slate-400 hover:bg-slate-800 hover:text-white transition">
+                    <i class="fa-solid fa-box-archive w-5"></i>
+                    <span>Produtos & Estoque</span>
+                </button>
+                <button onclick="switchTab('relatorios')" id="btn-relatorios" class="w-full flex items-center space-x-3 px-4 py-3 rounded-xl text-slate-400 hover:bg-slate-800 hover:text-white transition">
+                    <i class="fa-solid fa-chart-line w-5"></i>
+                    <span>Relatórios Mensais</span>
+                </button>
+            </nav>
+        </div>
+        <div class="p-6 border-t border-slate-800">
+            <a href="index.html" class="w-full flex items-center space-x-3 px-4 py-3 rounded-xl text-red-400 hover:bg-red-500/10 transition text-sm font-medium">
+                <i class="fa-solid fa-right-from-bracket w-5"></i>
+                <span>Sair do Sistema</span>
+            </a>
+        </div>
+    </aside>
+
+    <!-- Área Principal de Conteúdo -->
+    <main class="flex-1 flex flex-col h-screen overflow-y-auto">
+        <!-- Topbar -->
+        <header class="h-20 bg-white border-b border-slate-100 px-8 flex items-center justify-between sticky top-0 z-20">
+            <h2 id="page-title" class="text-xl font-black text-slate-900 tracking-tight">Agenda de Horários</h2>
+            <div class="flex items-center space-x-4">
+                <div class="text-right">
+                    <p class="text-xs font-bold text-slate-900">Salão Principal</p>
+                    <p class="text-[11px] text-emerald-600 font-medium">● Sistema Ativo</p>
+                </div>
+                <div class="w-10 h-10 bg-indigo-100 text-indigo-700 rounded-xl font-bold flex items-center justify-center">
+                    NR
+                </div>
+            </div>
+        </header>
+
+        <!-- Conteúdo das Abas -->
+        <div class="p-8 max-w-7xl w-full mx-auto space-y-6">
+
+            <!-- ABA 1: AGENDA -->
+            <div id="tab-agenda" class="tab-content space-y-6">
+                <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+                    <p class="text-sm text-slate-500">Gerencie os compromissos, horários e profissionais do seu estabelecimento.</p>
+                    <button onclick="alert('Funcionalidade de Novo Agendamento integrada com Firebase em breve!')" class="bg-indigo-600 hover:bg-indigo-700 text-white font-bold px-5 py-2.5 rounded-xl text-sm shadow-md shadow-indigo-100 transition">
+                        <i class="fa-solid fa-plus mr-2"></i> Novo Agendamento
+                    </button>
+                </div>
+                <div class="bg-white border border-slate-100 rounded-3xl p-6 shadow-sm space-y-4">
+                    <div class="flex justify-between items-center pb-4 border-b border-slate-100">
+                        <span class="font-bold text-slate-800">Hoje, 23 de Setembro de 2026</span>
+                        <span class="text-xs bg-indigo-50 text-indigo-700 font-semibold px-3 py-1 rounded-full">3 Atendimentos</span>
+                    </div>
+                    <div class="space-y-3">
+                        <div class="flex items-center justify-between p-4 bg-slate-50 rounded-2xl border border-slate-100">
+                            <div class="flex items-center space-x-4">
+                                <span class="font-mono font-bold text-indigo-600">09:00</span>
+                                <div>
+                                    <p class="font-bold text-slate-900">Camila Souza</p>
+                                    <p class="text-xs text-slate-500">Aplicação de Mega Hair • Profissional: Equipe</p>
+                                </div>
+                            </div>
+                            <span class="bg-emerald-100 text-emerald-800 text-xs font-bold px-3 py-1 rounded-full">Concluído</span>
+                        </div>
+                        <div class="flex items-center justify-between p-4 bg-slate-50 rounded-2xl border border-slate-100">
+                            <div class="flex items-center space-x-4">
+                                <span class="font-mono font-bold text-indigo-600">14:00</span>
+                                <div>
+                                    <p class="font-bold text-slate-900">Mariana Costa</p>
+                                    <p class="text-xs text-slate-500">Manutenção e Hidratação</p>
+                                </div>
+                            </div>
+                            <span class="bg-amber-100 text-amber-800 text-xs font-bold px-3 py-1 rounded-full">Em Andamento</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ABA 2: CLIENTES -->
+            <div id="tab-clientes" class="tab-content hidden space-y-6">
+                <div class="flex justify-between items-center">
+                    <p class="text-sm text-slate-500">Lista completa de clientes cadastrados e histórico de visitas.</p>
+                    <button onclick="alert('Modal de cadastro de cliente')" class="bg-indigo-600 text-white font-bold px-5 py-2.5 rounded-xl text-sm shadow-md shadow-indigo-100 transition">
+                        <i class="fa-solid fa-user-plus mr-2"></i> Cadastrar Cliente
+                    </button>
+                </div>
+                <div class="bg-white border border-slate-100 rounded-3xl p-6 shadow-sm">
+                    <table class="w-full text-left border-collapse text-sm">
+                        <thead>
+                            <tr class="border-b border-slate-100 text-slate-400 font-semibold text-xs uppercase">
+                                <th class="pb-3">Nome</th>
+                                <th class="pb-3">Telefone</th>
+                                <th class="pb-3">Última Visita</th>
+                                <th class="pb-3 text-right">Ações</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-slate-50">
+                            <tr>
+                                <td class="py-4 font-bold text-slate-900">Camila Souza</td>
+                                <td class="py-4 text-slate-600">(12) 99888-7766</td>
+                                <td class="py-4 text-slate-600">Hoje</td>
+                                <td class="py-4 text-right"><button class="text-indigo-600 font-semibold hover:underline">Ver Histórico</button></td>
+                            </tr>
+                            <tr>
+                                <td class="py-4 font-bold text-slate-900">Mariana Costa</td>
+                                <td class="py-4 text-slate-600">(12) 99111-2233</td>
+                                <td class="py-4 text-slate-600">Hoje</td>
+                                <td class="py-4 text-right"><button class="text-indigo-600 font-semibold hover:underline">Ver Histórico</button></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- ABA 3: PRODUTOS E ESTOQUE -->
+            <div id="tab-produtos" class="tab-content hidden space-y-6">
+                <div class="flex justify-between items-center">
+                    <p class="text-sm text-slate-500">Controle de produtos para revenda e insumos internos.</p>
+                    <button onclick="alert('Adicionar produto ao estoque')" class="bg-indigo-600 text-white font-bold px-5 py-2.5 rounded-xl text-sm shadow-md shadow-indigo-100 transition">
+                        <i class="fa-solid fa-box mr-2"></i> Adicionar Produto
+                    </button>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <div class="bg-white border border-slate-100 p-6 rounded-3xl shadow-sm space-y-2">
+                        <p class="text-xs text-slate-400 font-bold uppercase">Shampoo Especializado</p>
+                        <p class="text-2xl font-black text-slate-900">18 unidades</p>
+                        <p class="text-xs text-emerald-600 font-semibold">Estoque seguro</p>
+                    </div>
+                    <div class="bg-white border border-slate-100 p-6 rounded-3xl shadow-sm space-y-2">
+                        <p class="text-xs text-slate-400 font-bold uppercase">Óleo Reparador</p>
+                        <p class="text-2xl font-black text-slate-900">7 unidades</p>
+                        <p class="text-xs text-amber-600 font-semibold">Reposição necessária</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ABA 4: RELATÓRIOS MENSAIS -->
+            <div id="tab-relatorios" class="tab-content hidden space-y-6">
+                <p class="text-sm text-slate-500">Acompanhamento financeiro e faturamento mensal consolidado.</p>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div class="bg-white border border-slate-100 p-6 rounded-3xl shadow-sm space-y-4">
+                        <h3 class="font-bold text-slate-900">Faturamento do Mês (Setembro)</h3>
+                        <p class="text-3xl font-black text-indigo-600">R$ 14.850,00</p>
+                        <p class="text-xs text-slate-500">+18% em relação ao mês anterior</p>
+                    </div>
+                    <div class="bg-white border border-slate-100 p-6 rounded-3xl shadow-sm space-y-4">
+                        <h3 class="font-bold text-slate-900">Serviços Mais Lucrativos</h3>
+                        <div class="space-y-2 text-sm">
+                            <div class="flex justify-between"><span class="text-slate-600">Aplicação de Mega Hair</span><span class="font-bold text-slate-900">R$ 9.200,00</span></div>
+                            <div class="flex justify-between"><span class="text-slate-600">Manutenção</span><span class="font-bold text-slate-900">R$ 3.450,00</span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- Script para Alternar as Abas -->
+    <script>
+        function switchTab(tabName) {
+            // Esconde todas as abas
+            document.querySelectorAll('.tab-content').forEach(el => el.classList.add('hidden'));
+            // Mostra a aba selecionada
+            document.getElementById('tab-' + tabName).classList.remove('hidden');
+
+            // Reseta estilos dos botões da sidebar
+            ['agenda', 'clientes', 'produtos', 'relatorios'].forEach(name => {
+                const btn = document.getElementById('btn-' + name);
+                btn.className = "w-full flex items-center space-x-3 px-4 py-3 rounded-xl text-slate-400 hover:bg-slate-800 hover:text-white transition";
+            });
+
+            // Ativa o botão correspondente
+            const activeBtn = document.getElementById('btn-' + tabName);
+            activeBtn.className = "w-full flex items-center space-x-3 px-4 py-3 rounded-xl bg-indigo-600 text-white font-semibold transition shadow-md shadow-indigo-600/20";
+
+            // Atualiza o título do topo
+            const titles = {
+                'agenda': 'Agenda de Horários',
+                'clientes': 'Gestão de Clientes',
+                'produtos': 'Controle de Produtos e Estoque',
+                'relatorios': 'Relatórios Mensais e Faturamento'
+            };
+            document.getElementById('page-title').innerText = titles[tabName];
+        }
+    </script>
+</body>
+</html>

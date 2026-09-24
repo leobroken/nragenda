@@ -9,10 +9,9 @@
 </head>
 <body class="bg-slate-100 text-slate-800 font-sans antialiased flex h-screen overflow-hidden">
 
-    <!-- Menu Lateral (Drawer Roxo Estilo Referência) -->
+    <!-- Menu Lateral (Drawer Roxo) -->
     <aside id="sidebar" class="fixed inset-y-0 left-0 z-50 w-72 bg-white shadow-2xl transform -translate-x-full transition-transform duration-300 flex flex-col justify-between">
         <div>
-            <!-- Topo do Menu com Perfil -->
             <div class="bg-purple-900 text-white p-6 space-y-3">
                 <div class="flex justify-center">
                     <div class="w-16 h-16 rounded-full border-2 border-purple-300 flex items-center justify-center bg-purple-800 text-lg font-bold">
@@ -31,189 +30,209 @@
                 </div>
             </div>
 
-            <!-- Lista de Opções do Menu -->
             <nav class="p-2 space-y-1 text-sm font-medium overflow-y-auto max-h-[calc(100vh-250px)]">
-                <button onclick="switchTab('vendas')" id="menu-vendas" class="w-full flex items-center space-x-3 px-4 py-2.5 rounded-lg text-slate-600 hover:bg-purple-50 hover:text-purple-900 transition">
-                    <i class="fa-solid fa-cash-register w-5 text-purple-800"></i><span>Vendas</span>
-                </button>
-                <button onclick="switchTab('agenda')" id="menu-agenda" class="w-full flex items-center space-x-3 px-4 py-2.5 rounded-lg bg-purple-100 text-purple-900 font-semibold transition">
-                    <i class="fa-solid fa-calendar-days w-5 text-purple-800"></i><span>Agenda</span>
-                </button>
-                <button onclick="switchTab('clientes')" id="menu-clientes" class="w-full flex items-center space-x-3 px-4 py-2.5 rounded-lg text-slate-600 hover:bg-purple-50 hover:text-purple-900 transition">
-                    <i class="fa-solid fa-users w-5 text-purple-800"></i><span>Clientes</span>
-                </button>
-                <button onclick="switchTab('relatorios')" id="menu-relatorios" class="w-full flex items-center space-x-3 px-4 py-2.5 rounded-lg text-slate-600 hover:bg-purple-50 hover:text-purple-900 transition">
-                    <i class="fa-solid fa-chart-pie w-5 text-purple-800"></i><span>Relatórios</span>
-                </button>
-                <button onclick="switchTab('financeiro')" id="menu-financeiro" class="w-full flex items-center space-x-3 px-4 py-2.5 rounded-lg text-slate-600 hover:bg-purple-50 hover:text-purple-900 transition">
-                    <i class="fa-solid fa-wallet w-5 text-purple-800"></i><span>Financeiro</span>
-                </button>
-                <button onclick="switchTab('produtos')" id="menu-produtos" class="w-full flex items-center space-x-3 px-4 py-2.5 rounded-lg text-slate-600 hover:bg-purple-50 hover:text-purple-900 transition">
-                    <i class="fa-solid fa-box-archive w-5 text-purple-800"></i><span>Produtos</span>
-                </button>
-                <button onclick="switchTab('servicos')" id="menu-servicos" class="w-full flex items-center space-x-3 px-4 py-2.5 rounded-lg text-slate-600 hover:bg-purple-50 hover:text-purple-900 transition">
-                    <i class="fa-solid fa-scissors w-5 text-purple-800"></i><span>Serviços</span>
-                </button>
+                <button onclick="switchTab('vendas')" id="menu-vendas" class="w-full flex items-center space-x-3 px-4 py-2.5 rounded-lg text-slate-600 hover:bg-purple-50 hover:text-purple-900 transition"><i class="fa-solid fa-cash-register w-5 text-purple-800"></i><span>Vendas</span></button>
+                <button onclick="switchTab('agenda')" id="menu-agenda" class="w-full flex items-center space-x-3 px-4 py-2.5 rounded-lg bg-purple-100 text-purple-900 font-semibold transition"><i class="fa-solid fa-calendar-days w-5 text-purple-800"></i><span>Agenda</span></button>
+                <button onclick="switchTab('clientes')" id="menu-clientes" class="w-full flex items-center space-x-3 px-4 py-2.5 rounded-lg text-slate-600 hover:bg-purple-50 hover:text-purple-900 transition"><i class="fa-solid fa-users w-5 text-purple-800"></i><span>Clientes</span></button>
+                <button onclick="switchTab('relatorios')" id="menu-relatorios" class="w-full flex items-center space-x-3 px-4 py-2.5 rounded-lg text-slate-600 hover:bg-purple-50 hover:text-purple-900 transition"><i class="fa-solid fa-chart-pie w-5 text-purple-800"></i><span>Relatórios</span></button>
+                <button onclick="switchTab('produtos')" id="menu-produtos" class="w-full flex items-center space-x-3 px-4 py-2.5 rounded-lg text-slate-600 hover:bg-purple-50 hover:text-purple-900 transition"><i class="fa-solid fa-box-archive w-5 text-purple-800"></i><span>Produtos</span></button>
             </nav>
         </div>
-
         <div class="p-4 border-t border-slate-100">
-            <a href="index.html" class="w-full flex items-center space-x-3 px-4 py-2.5 rounded-lg text-red-600 hover:bg-red-50 transition text-sm font-medium">
-                <i class="fa-solid fa-power-off w-5"></i><span>Sair</span>
-            </a>
-            <p class="text-[10px] text-center text-slate-400 mt-2">WEB | 2100035</p>
+            <a href="index.html" class="w-full flex items-center space-x-3 px-4 py-2.5 rounded-lg text-red-600 hover:bg-red-50 transition text-sm font-medium"><i class="fa-solid fa-power-off w-5"></i><span>Sair</span></a>
         </div>
     </aside>
 
-    <!-- Overlay escuro para fechar o menu ao clicar fora -->
     <div id="overlay" onclick="toggleSidebar()" class="fixed inset-0 bg-black/50 z-40 hidden transition-opacity"></div>
 
     <!-- Área Principal -->
     <main class="flex-1 flex flex-col h-screen overflow-hidden">
         
-        <!-- Topo Roxo com Grelha e Botões -->
         <header class="bg-purple-800 text-white shadow-md z-10">
             <div class="px-4 py-3 flex items-center justify-between">
                 <div class="flex items-center space-x-4">
-                    <button onclick="toggleSidebar()" class="text-white text-lg focus:outline-none p-1">
-                        <i class="fa-solid fa-bars"></i>
-                    </button>
+                    <button onclick="toggleSidebar()" class="text-white text-lg focus:outline-none p-1"><i class="fa-solid fa-bars"></i></button>
                     <h1 class="text-lg font-bold tracking-wide">Agenda</h1>
                 </div>
                 <div class="flex items-center space-x-4 text-xs font-medium">
-                    <button class="flex items-center space-x-1 hover:text-purple-200"><i class="fa-solid fa-share-nodes"></i><span>Compartilhar</span></button>
-                    <button class="flex items-center space-x-1 hover:text-purple-200"><i class="fa-solid fa-table-list"></i><span>Lista</span></button>
-                    <button class="flex items-center space-x-1 hover:text-purple-200"><i class="fa-solid fa-circle-question"></i><span>Ajuda</span></button>
+                    <button class="hover:text-purple-200">Compartilhar</button>
+                    <button class="hover:text-purple-200">Lista</button>
+                    <button class="hover:text-purple-200">Ajuda</button>
                 </div>
             </div>
 
-            <!-- Seletor de Datas (Estilo Pílula da Referência) -->
+            <!-- Seletor de Data que abre o Calendário Interativo -->
             <div class="bg-purple-900 px-4 py-2.5 flex items-center justify-between">
-                <button class="text-purple-300 hover:text-white px-2"><i class="fa-solid fa-chevron-left"></i></button>
-                <div class="bg-white text-purple-900 px-6 py-1.5 rounded-full text-xs font-bold shadow-sm flex items-center space-x-2">
+                <button onclick="mudarDia(-1)" class="text-purple-300 hover:text-white px-2"><i class="fa-solid fa-chevron-left"></i></button>
+                <div onclick="toggleCalendarModal()" class="bg-white text-purple-900 px-6 py-1.5 rounded-full text-xs font-bold shadow-sm flex items-center space-x-2 cursor-pointer hover:bg-purple-50 transition">
                     <i class="fa-regular fa-calendar text-purple-700"></i>
-                    <span>23/09/2026, quarta-feira</span>
+                    <span id="data-atual-label">23/09/2026, quarta-feira</span>
                 </div>
-                <button class="text-purple-300 hover:text-white px-2"><i class="fa-solid fa-chevron-right"></i></button>
+                <button onclick="mudarDia(1)" class="text-purple-300 hover:text-white px-2"><i class="fa-solid fa-chevron-right"></i></button>
             </div>
         </header>
 
-        <!-- Conteúdo Dinâmico das Abas -->
+        <!-- Conteúdo da Agenda -->
         <div class="flex-1 overflow-y-auto bg-white relative">
-
-            <!-- ABA AGENDA (Grelha de Horários exata da referência) -->
-            <div id="tab-agenda" class="tab-content">
-                <!-- Cabeçalho do Profissional na Grelha -->
-                <div class="sticky top-0 bg-white border-b border-slate-200 px-6 py-3 flex items-center justify-between z-10 shadow-sm">
-                    <div class="flex items-center space-x-3">
-                        <div class="w-9 h-9 rounded-full bg-purple-100 border border-purple-300 text-purple-900 font-bold flex items-center justify-center text-xs">
-                            L
-                        </div>
-                        <span class="font-bold text-slate-800 text-sm">Leo</span>
-                    </div>
-                </div>
-
-                <!-- Grelha de Horários -->
-                <div class="divide-y divide-slate-100 text-xs">
-                    <div class="flex items-center px-6 py-4 hover:bg-slate-50">
-                        <span class="w-16 font-mono text-slate-400 font-semibold">20:00</span>
-                        <div class="flex-1 border-l border-slate-200 pl-4 text-slate-300">Nenhum agendamento</div>
-                    </div>
-                    <div class="flex items-center px-6 py-4 hover:bg-slate-50">
-                        <span class="w-16 font-mono text-slate-400 font-semibold">20:30</span>
-                        <div class="flex-1 border-l border-slate-200 pl-4 text-slate-300">Nenhum agendamento</div>
-                    </div>
-                    <div class="flex items-center px-6 py-4 hover:bg-slate-50">
-                        <span class="w-16 font-mono text-slate-400 font-semibold">21:00</span>
-                        <div class="flex-1 border-l border-slate-200 pl-4 text-slate-300">Nenhum agendamento</div>
-                    </div>
-                    <div class="flex items-center px-6 py-4 hover:bg-slate-50">
-                        <span class="w-16 font-mono text-slate-400 font-semibold">21:30</span>
-                        <div class="flex-1 border-l border-slate-200 pl-4 text-slate-300">Nenhum agendamento</div>
-                    </div>
-                    <div class="flex items-center px-6 py-4 hover:bg-slate-50">
-                        <span class="w-16 font-mono text-slate-400 font-semibold">22:00</span>
-                        <div class="flex-1 border-l border-slate-200 pl-4 text-slate-300">Nenhum agendamento</div>
-                    </div>
-                    <div class="flex items-center px-6 py-4 hover:bg-slate-50">
-                        <span class="w-16 font-mono text-slate-400 font-semibold">22:30</span>
-                        <div class="flex-1 border-l border-slate-200 pl-4 text-slate-300">Nenhum agendamento</div>
-                    </div>
-                    <div class="flex items-center px-6 py-4 hover:bg-slate-50">
-                        <span class="w-16 font-mono text-slate-400 font-semibold">23:00</span>
-                        <div class="flex-1 border-l border-slate-200 pl-4 text-slate-300">Nenhum agendamento</div>
-                    </div>
-                    <div class="flex items-center px-6 py-4 hover:bg-slate-50">
-                        <span class="w-16 font-mono text-slate-400 font-semibold">23:30</span>
-                        <div class="flex-1 border-l border-slate-200 pl-4 text-slate-300">Nenhum agendamento</div>
-                    </div>
+            <div class="sticky top-0 bg-white border-b border-slate-200 px-6 py-3 flex items-center justify-between z-10 shadow-sm">
+                <div class="flex items-center space-x-3">
+                    <div class="w-9 h-9 rounded-full bg-purple-100 border border-purple-300 text-purple-900 font-bold flex items-center justify-center text-xs">L</div>
+                    <span class="font-bold text-slate-800 text-sm">Leo</span>
                 </div>
             </div>
 
-            <!-- OUTRAS ABAS (Placeholder para navegação) -->
-            <div id="tab-clientes" class="tab-content hidden p-6">
-                <h2 class="text-lg font-bold text-purple-900 mb-2">Gestão de Clientes</h2>
-                <p class="text-sm text-slate-600">Lista de clientes cadastrados no sistema.</p>
+            <!-- Grelha de Horários -->
+            <div id="grelha-horarios" class="divide-y divide-slate-100 text-xs">
+                <!-- Gerado dinamicamente via JS -->
             </div>
-            <div id="tab-produtos" class="tab-content hidden p-6">
-                <h2 class="text-lg font-bold text-purple-900 mb-2">Controle de Produtos</h2>
-                <p class="text-sm text-slate-600">Estoque de produtos e itens de revenda.</p>
-            </div>
-            <div id="tab-relatorios" class="tab-content hidden p-6">
-                <h2 class="text-lg font-bold text-purple-900 mb-2">Relatórios Mensais</h2>
-                <p class="text-sm text-slate-600">Faturamento e desempenho financeiro.</p>
-            </div>
-            <div id="tab-vendas" class="tab-content hidden p-6">
-                <h2 class="text-lg font-bold text-purple-900 mb-2">Módulo de Vendas</h2>
-                <p class="text-sm text-slate-600">Registo rápido de vendas de serviços e produtos.</p>
-            </div>
-            <div id="tab-financeiro" class="tab-content hidden p-6">
-                <h2 class="text-lg font-bold text-purple-900 mb-2">Controlo Financeiro</h2>
-                <p class="text-sm text-slate-600">Entradas, saídas e fluxo de caixa.</p>
-            </div>
-            <div id="tab-servicos" class="tab-content hidden p-6">
-                <h2 class="text-lg font-bold text-purple-900 mb-2">Serviços do Salão</h2>
-                <p class="text-sm text-slate-600">Tabela de preços e duração dos serviços.</p>
-            </div>
-
         </div>
 
-        <!-- Botão Flutuante de Ação Rápida (+) Idêntico à Referência -->
-        <button onclick="alert('Abrir modal para adicionar novo agendamento ou venda!')" class="fixed bottom-6 right-6 w-14 h-14 bg-teal-500 hover:bg-teal-600 text-white rounded-full shadow-2xl flex items-center justify-center text-2xl transition z-30 focus:outline-none">
+        <!-- Botão Flutuante (+) -->
+        <button onclick="alert('Criar novo agendamento')" class="fixed bottom-6 right-6 w-14 h-14 bg-teal-500 hover:bg-teal-600 text-white rounded-full shadow-2xl flex items-center justify-center text-2xl transition z-30 focus:outline-none">
             <i class="fa-solid fa-plus"></i>
         </button>
-
     </main>
 
-    <!-- Scripts de Interação -->
+    <!-- MODAL DO CALENDÁRIO INTERATIVO (Estilo exato da referência) -->
+    <div id="calendarModal" class="fixed inset-0 bg-black/60 z-50 hidden flex items-center justify-center p-4">
+        <div class="bg-white w-full max-w-sm rounded-3xl overflow-hidden shadow-2xl animate-in fade-in zoom-in duration-200">
+            <!-- Topo Roxo do Modal -->
+            <div class="bg-purple-900 text-white px-6 py-4 flex items-center justify-between">
+                <button onclick="toggleCalendarModal()" class="text-white text-lg"><i class="fa-solid fa-xmark"></i></button>
+                <div class="flex items-center space-x-2 text-sm font-semibold">
+                    <span>setembro de 2026</span>
+                    <i class="fa-solid fa-chevron-down text-xs"></i>
+                </div>
+                <div class="flex space-x-3 text-purple-300">
+                    <button><i class="fa-solid fa-chevron-left"></i></button>
+                    <button><i class="fa-solid fa-chevron-right"></i></button>
+                </div>
+            </div>
+
+            <!-- Corpo do Calendário -->
+            <div class="p-6 space-y-4">
+                <!-- Dias da Semana -->
+                <div class="grid grid-cols-7 text-center text-xs font-bold text-slate-400">
+                    <span>D</span><span>S</span><span>T</span><span>Q</span><span>Q</span><span>S</span><span>S</span>
+                </div>
+                <!-- Grelha de Dias do Mês (Setembro 2026) -->
+                <div class="grid grid-cols-7 gap-y-3 text-center text-xs font-semibold text-slate-700">
+                    <!-- Semana 1 -->
+                    <span class="text-slate-300">30</span><span class="text-slate-300">31</span>
+                    <div class="flex flex-col items-center cursor-pointer" onclick="selecionarData('1')"><span>1</span><span class="w-1.5 h-1.5 bg-emerald-500 rounded-full mt-1"></span></div>
+                    <div class="flex flex-col items-center cursor-pointer" onclick="selecionarData('2')"><span>2</span><span class="w-1.5 h-1.5 bg-emerald-500 rounded-full mt-1"></span></div>
+                    <div class="flex flex-col items-center cursor-pointer" onclick="selecionarData('3')"><span>3</span><span class="w-1.5 h-1.5 bg-emerald-500 rounded-full mt-1"></span></div>
+                    <div class="flex flex-col items-center cursor-pointer" onclick="selecionarData('4')"><span>4</span><span class="w-1.5 h-1.5 bg-emerald-500 rounded-full mt-1"></span></div>
+                    <div class="flex flex-col items-center cursor-pointer" onclick="selecionarData('5')"><span>5</span><span class="w-1.5 h-1.5 bg-emerald-500 rounded-full mt-1"></span></div>
+                    
+                    <!-- Semana 2 -->
+                    <span>6</span><span>7</span><span>8</span>
+                    <div class="flex flex-col items-center cursor-pointer" onclick="selecionarData('9')"><span>9</span><span class="w-1.5 h-1.5 bg-emerald-500 rounded-full mt-1"></span></div>
+                    <span>10</span><span>11</span><span>12</span>
+                    
+                    <!-- Semana 3 -->
+                    <span>13</span><span>14</span><span>15</span>
+                    <div class="flex flex-col items-center cursor-pointer" onclick="selecionarData('16')"><span>16</span><div class="flex space-x-0.5 mt-1"><span class="w-1 h-1 bg-emerald-500 rounded-full"></span><span class="w-1 h-1 bg-slate-300 rounded-full"></span></div></div>
+                    <span>17</span>
+                    <div class="flex flex-col items-center cursor-pointer" onclick="selecionarData('18')"><span>18</span><div class="flex space-x-0.5 mt-1"><span class="w-1 h-1 bg-slate-300 rounded-full"></span><span class="w-1 h-1 bg-slate-300 rounded-full"></span></div></div>
+                    <span>19</span>
+                    
+                    <!-- Semana 4 (Dia 23 Selecionado) -->
+                    <span>20</span><span>21</span><span>22</span>
+                    <div class="flex flex-col items-center cursor-pointer">
+                        <span class="w-8 h-8 bg-teal-500 text-white rounded-full flex items-center justify-center font-bold">23</span>
+                        <span class="w-1.5 h-1.5 bg-slate-300 rounded-full mt-0.5"></span>
+                    </div>
+                    <div class="flex flex-col items-center cursor-pointer" onclick="selecionarData('24')"><span>24</span><span class="w-1.5 h-1.5 bg-slate-300 rounded-full mt-1"></span></div>
+                    <div class="flex flex-col items-center cursor-pointer" onclick="selecionarData('25')"><span>25</span><span class="w-1.5 h-1.5 bg-slate-300 rounded-full mt-1"></span></div>
+                    <div class="flex flex-col items-center cursor-pointer" onclick="selecionarData('26')"><span>26</span><span class="w-1.5 h-1.5 bg-slate-300 rounded-full mt-1"></span></div>
+                    
+                    <!-- Semana 5 -->
+                    <span>27</span><span>28</span><span>29</span>
+                    <div class="flex flex-col items-center cursor-pointer" onclick="selecionarData('30')"><span>30</span><span class="w-1.5 h-1.5 bg-slate-300 rounded-full mt-1"></span></div>
+                    <span class="text-slate-300">1</span><span class="text-slate-300">2</span><span class="text-slate-300">3</span>
+                </div>
+
+                <!-- Rodapé do Modal -->
+                <div class="flex items-center justify-between pt-4 border-t border-slate-100">
+                    <button onclick="toggleCalendarModal()" class="text-red-500 font-bold text-xs flex items-center space-x-1"><i class="fa-solid fa-circle-xmark"></i><span>Limpar</span></button>
+                    <button onclick="toggleCalendarModal()" class="bg-teal-500 text-white px-6 py-2 rounded-full font-bold text-xs shadow-md">Ok</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Script de Gestão da Agenda e Calendário -->
     <script>
-        function toggleSidebar() {
-            const sidebar = document.getElementById('sidebar');
-            const overlay = document.getElementById('overlay');
-            sidebar.classList.toggle('-translate-x-full');
-            overlay.classList.toggle('hidden');
+        const horarios = ["08:00", "09:00", "10:00", "11:00", "14:00", "15:00", "16:00", "20:00", "20:30", "21:00", "21:30", "22:00", "22:30", "23:00", "23:30"];
+        
+        // Simulação de agendamentos por dia
+        const agendamentosPorDia = {
+            "23": [{ hora: "21:00", cliente: "Camila Souza", servico: "Aplicação de Mega Hair" }]
+        };
+
+        function renderizarAgenda(diaSelecionado = "23") {
+            const container = document.getElementById('grelha-horarios');
+            container.innerHTML = "";
+
+            horarios.forEach(h => {
+                const agendamentoDoHorario = (agendamentosPorDia[diaSelecionado] || []).find(a => a.hora === h);
+                
+                const linha = document.createElement('div');
+                linha.className = "flex items-center px-6 py-4 hover:bg-slate-50";
+                
+                if(agendamentoDoHorario) {
+                    linha.innerHTML = `
+                        <span class="w-16 font-mono text-purple-700 font-bold">${h}</span>
+                        <div class="flex-1 border-l border-purple-200 pl-4 bg-purple-50/50 p-2 rounded-lg flex justify-between items-center">
+                            <div>
+                                <p class="font-bold text-slate-900">${agendamentoDoHorario.cliente}</p>
+                                <p class="text-[11px] text-purple-600">${agendamentoDoHorario.servico}</p>
+                            </div>
+                            <span class="bg-emerald-100 text-emerald-800 text-[10px] font-bold px-2 py-0.5 rounded-full">Confirmado</span>
+                        </div>
+                    `;
+                } else {
+                    linha.innerHTML = `
+                        <span class="w-16 font-mono text-slate-400 font-semibold">${h}</span>
+                        <div class="flex-1 border-l border-slate-200 pl-4 text-slate-300">Nenhum agendamento</div>
+                    `;
+                }
+                container.appendChild(linha);
+            });
         }
 
+        function toggleSidebar() {
+            document.getElementById('sidebar').classList.toggle('-translate-x-full');
+            document.getElementById('overlay').classList.toggle('hidden');
+        }
+
+        function toggleCalendarModal() {
+            document.getElementById('calendarModal').classList.toggle('hidden');
+        }
+
+        function selecionarData(dia) {
+            const diasSemana = { "23": "23/09/2026, quarta-feira", "16": "16/09/2026, quarta-feira", "1": "01/09/2026, terça-feira", "9": "09/09/2026, quarta-feira" };
+            document.getElementById('data-atual-label').innerText = diasSemana[dia] || `${dia}/09/2026`;
+            renderizarAgenda(dia);
+            toggleCalendarModal();
+        }
+
+        function mudarDia(delta) {
+            // Navegação simples de dia de exemplo
+            let diaAtual = parseInt(document.getElementById('data-atual-label').innerText.split('/')[0]);
+            let novoDia = String(diaAtual + delta);
+            selecionarData(novoDia);
+        }
+
+        // Inicializa a grelha ao carregar
+        document.addEventListener('DOMContentLoaded', () => {
+            renderizarAgenda("23");
+        });
+
         function switchTab(tabName) {
-            // Esconde todas as abas
-            document.querySelectorAll('.tab-content').forEach(el => el.classList.add('hidden'));
-            // Mostra a selecionada
-            document.getElementById('tab-' + tabName).classList.remove('hidden');
-
-            // Fecha o menu lateral automaticamente em dispositivos móveis
-            toggleSidebar();
-
-            // Atualiza destaque no menu
-            ['vendas', 'agenda', 'clientes', 'relatorios', 'financeiro', 'produtos', 'servicos'].forEach(name => {
-                const btn = document.getElementById('menu-' + name);
-                if(btn) {
-                    btn.className = "w-full flex items-center space-x-3 px-4 py-2.5 rounded-lg text-slate-600 hover:bg-purple-50 hover:text-purple-900 transition";
-                }
-            });
-            const activeBtn = document.getElementById('menu-' + tabName);
-            if(activeBtn) {
-                activeBtn.className = "w-full flex items-center space-x-3 px-4 py-2.5 rounded-lg bg-purple-100 text-purple-900 font-semibold transition";
-            }
+            if(tabName === 'agenda') return;
+            alert('Navegando para a aba: ' + tabName);
         }
     </script>
 </body>

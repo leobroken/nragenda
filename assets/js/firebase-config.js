@@ -1,17 +1,16 @@
 // Importe os módulos necessários do SDK do Firebase
-// (Estamos usando as versões CDN oficiais para funcionar direto no navegador sem build complexo)
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
 import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword, signOut, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
 import { getFirestore, collection, addDoc, getDocs, doc, deleteDoc, updateDoc, onSnapshot } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
 
-// TODO: Substitua com as credenciais do seu projeto Firebase (Criado gratuitamente em console.firebase.google.com)
+// Credenciais do seu projeto Firebase (nragenda-193db)
 const firebaseConfig = {
-    apiKey: "SUA_API_KEY_AQUI",
-    authDomain: "seu-projeto.firebaseapp.com",
-    projectId: "seu-projeto",
-    storageBucket: "seu-projeto.appspot.com",
-    messagingSenderId: "SEU_SENDER_ID",
-    appId: "SEU_APP_ID"
+    apiKey: "AlzaSyCgnseZiq_mJ6JNIFMwgyn9KNQbR8-Fk-g",
+    authDomain: "nragenda-193db.firebaseapp.com",
+    projectId: "nragenda-193db",
+    storageBucket: "nragenda-193db.appspot.com",
+    messagingSenderId: "25625156691",
+    appId: "1:25625156691:web:0dad4357f0cad2268baa6"
 };
 
 // Inicializa o Firebase

@@ -31,11 +31,11 @@
             </div>
 
             <nav class="p-2 space-y-1 text-sm font-medium overflow-y-auto max-h-[calc(100vh-250px)]">
-                <button onclick="switchTab('vendas')" id="menu-vendas" class="w-full flex items-center space-x-3 px-4 py-2.5 rounded-lg text-slate-600 hover:bg-purple-50 hover:text-purple-900 transition"><i class="fa-solid fa-cash-register w-5 text-purple-800"></i><span>Vendas</span></button>
-                <button onclick="switchTab('agenda')" id="menu-agenda" class="w-full flex items-center space-x-3 px-4 py-2.5 rounded-lg bg-purple-100 text-purple-900 font-semibold transition"><i class="fa-solid fa-calendar-days w-5 text-purple-800"></i><span>Agenda</span></button>
-                <button onclick="switchTab('clientes')" id="menu-clientes" class="w-full flex items-center space-x-3 px-4 py-2.5 rounded-lg text-slate-600 hover:bg-purple-50 hover:text-purple-900 transition"><i class="fa-solid fa-users w-5 text-purple-800"></i><span>Clientes</span></button>
-                <button onclick="switchTab('relatorios')" id="menu-relatorios" class="w-full flex items-center space-x-3 px-4 py-2.5 rounded-lg text-slate-600 hover:bg-purple-50 hover:text-purple-900 transition"><i class="fa-solid fa-chart-pie w-5 text-purple-800"></i><span>Relatórios</span></button>
-                <button onclick="switchTab('produtos')" id="menu-produtos" class="w-full flex items-center space-x-3 px-4 py-2.5 rounded-lg text-slate-600 hover:bg-purple-50 hover:text-purple-900 transition"><i class="fa-solid fa-box-archive w-5 text-purple-800"></i><span>Produtos</span></button>
+                <button onclick="switchTab('vendas')" class="w-full flex items-center space-x-3 px-4 py-2.5 rounded-lg text-slate-600 hover:bg-purple-50 hover:text-purple-900 transition"><i class="fa-solid fa-cash-register w-5 text-purple-800"></i><span>Vendas</span></button>
+                <button onclick="switchTab('agenda')" class="w-full flex items-center space-x-3 px-4 py-2.5 rounded-lg bg-purple-100 text-purple-900 font-semibold transition"><i class="fa-solid fa-calendar-days w-5 text-purple-800"></i><span>Agenda</span></button>
+                <button onclick="switchTab('clientes')" class="w-full flex items-center space-x-3 px-4 py-2.5 rounded-lg text-slate-600 hover:bg-purple-50 hover:text-purple-900 transition"><i class="fa-solid fa-users w-5 text-purple-800"></i><span>Clientes</span></button>
+                <button onclick="switchTab('relatorios')" class="w-full flex items-center space-x-3 px-4 py-2.5 rounded-lg text-slate-600 hover:bg-purple-50 hover:text-purple-900 transition"><i class="fa-solid fa-chart-pie w-5 text-purple-800"></i><span>Relatórios</span></button>
+                <button onclick="switchTab('produtos')" class="w-full flex items-center space-x-3 px-4 py-2.5 rounded-lg text-slate-600 hover:bg-purple-50 hover:text-purple-900 transition"><i class="fa-solid fa-box-archive w-5 text-purple-800"></i><span>Produtos</span></button>
             </nav>
         </div>
         <div class="p-4 border-t border-slate-100">
@@ -61,7 +61,7 @@
                 </div>
             </div>
 
-            <!-- Seletor de Data que abre o Calendário Interativo -->
+            <!-- Seletor de Data -->
             <div class="bg-purple-900 px-4 py-2.5 flex items-center justify-between">
                 <button onclick="mudarDia(-1)" class="text-purple-300 hover:text-white px-2"><i class="fa-solid fa-chevron-left"></i></button>
                 <div onclick="toggleCalendarModal()" class="bg-white text-purple-900 px-6 py-1.5 rounded-full text-xs font-bold shadow-sm flex items-center space-x-2 cursor-pointer hover:bg-purple-50 transition">
@@ -82,9 +82,7 @@
             </div>
 
             <!-- Grelha de Horários -->
-            <div id="grelha-horarios" class="divide-y divide-slate-100 text-xs">
-                <!-- Gerado dinamicamente via JS -->
-            </div>
+            <div id="grelha-horarios" class="divide-y divide-slate-100 text-xs"></div>
         </div>
 
         <!-- Botão Flutuante (+) -->
@@ -93,10 +91,9 @@
         </button>
     </main>
 
-    <!-- MODAL DO CALENDÁRIO INTERATIVO (Estilo exato da referência) -->
+    <!-- MODAL DO CALENDÁRIO INTERATIVO (Sem marcações, totalmente clicável) -->
     <div id="calendarModal" class="fixed inset-0 bg-black/60 z-50 hidden flex items-center justify-center p-4">
         <div class="bg-white w-full max-w-sm rounded-3xl overflow-hidden shadow-2xl animate-in fade-in zoom-in duration-200">
-            <!-- Topo Roxo do Modal -->
             <div class="bg-purple-900 text-white px-6 py-4 flex items-center justify-between">
                 <button onclick="toggleCalendarModal()" class="text-white text-lg"><i class="fa-solid fa-xmark"></i></button>
                 <div class="flex items-center space-x-2 text-sm font-semibold">
@@ -109,85 +106,90 @@
                 </div>
             </div>
 
-            <!-- Corpo do Calendário -->
             <div class="p-6 space-y-4">
-                <!-- Dias da Semana -->
                 <div class="grid grid-cols-7 text-center text-xs font-bold text-slate-400">
                     <span>D</span><span>S</span><span>T</span><span>Q</span><span>Q</span><span>S</span><span>S</span>
                 </div>
-                <!-- Grelha de Dias do Mês (Setembro 2026) -->
+                
+                <!-- Grelha de Dias do Mês (Todos clicáveis de 1 a 30) -->
                 <div class="grid grid-cols-7 gap-y-3 text-center text-xs font-semibold text-slate-700">
-                    <!-- Semana 1 -->
-                    <span class="text-slate-300">30</span><span class="text-slate-300">31</span>
-                    <div class="flex flex-col items-center cursor-pointer" onclick="selecionarData('1')"><span>1</span><span class="w-1.5 h-1.5 bg-emerald-500 rounded-full mt-1"></span></div>
-                    <div class="flex flex-col items-center cursor-pointer" onclick="selecionarData('2')"><span>2</span><span class="w-1.5 h-1.5 bg-emerald-500 rounded-full mt-1"></span></div>
-                    <div class="flex flex-col items-center cursor-pointer" onclick="selecionarData('3')"><span>3</span><span class="w-1.5 h-1.5 bg-emerald-500 rounded-full mt-1"></span></div>
-                    <div class="flex flex-col items-center cursor-pointer" onclick="selecionarData('4')"><span>4</span><span class="w-1.5 h-1.5 bg-emerald-500 rounded-full mt-1"></span></div>
-                    <div class="flex flex-col items-center cursor-pointer" onclick="selecionarData('5')"><span>5</span><span class="w-1.5 h-1.5 bg-emerald-500 rounded-full mt-1"></span></div>
+                    <span class="text-slate-300 py-2">30</span>
+                    <span class="text-slate-300 py-2">31</span>
+                    <button onclick="selecionarData(1)" class="py-2 hover:bg-purple-100 rounded-full transition">1</button>
+                    <button onclick="selecionarData(2)" class="py-2 hover:bg-purple-100 rounded-full transition">2</button>
+                    <button onclick="selecionarData(3)" class="py-2 hover:bg-purple-100 rounded-full transition">3</button>
+                    <button onclick="selecionarData(4)" class="py-2 hover:bg-purple-100 rounded-full transition">4</button>
+                    <button onclick="selecionarData(5)" class="py-2 hover:bg-purple-100 rounded-full transition">5</button>
                     
-                    <!-- Semana 2 -->
-                    <span>6</span><span>7</span><span>8</span>
-                    <div class="flex flex-col items-center cursor-pointer" onclick="selecionarData('9')"><span>9</span><span class="w-1.5 h-1.5 bg-emerald-500 rounded-full mt-1"></span></div>
-                    <span>10</span><span>11</span><span>12</span>
+                    <button onclick="selecionarData(6)" class="py-2 hover:bg-purple-100 rounded-full transition">6</button>
+                    <button onclick="selecionarData(7)" class="py-2 hover:bg-purple-100 rounded-full transition">7</button>
+                    <button onclick="selecionarData(8)" class="py-2 hover:bg-purple-100 rounded-full transition">8</button>
+                    <button onclick="selecionarData(9)" class="py-2 hover:bg-purple-100 rounded-full transition">9</button>
+                    <button onclick="selecionarData(10)" class="py-2 hover:bg-purple-100 rounded-full transition">10</button>
+                    <button onclick="selecionarData(11)" class="py-2 hover:bg-purple-100 rounded-full transition">11</button>
+                    <button onclick="selecionarData(12)" class="py-2 hover:bg-purple-100 rounded-full transition">12</button>
                     
-                    <!-- Semana 3 -->
-                    <span>13</span><span>14</span><span>15</span>
-                    <div class="flex flex-col items-center cursor-pointer" onclick="selecionarData('16')"><span>16</span><div class="flex space-x-0.5 mt-1"><span class="w-1 h-1 bg-emerald-500 rounded-full"></span><span class="w-1 h-1 bg-slate-300 rounded-full"></span></div></div>
-                    <span>17</span>
-                    <div class="flex flex-col items-center cursor-pointer" onclick="selecionarData('18')"><span>18</span><div class="flex space-x-0.5 mt-1"><span class="w-1 h-1 bg-slate-300 rounded-full"></span><span class="w-1 h-1 bg-slate-300 rounded-full"></span></div></div>
-                    <span>19</span>
+                    <button onclick="selecionarData(13)" class="py-2 hover:bg-purple-100 rounded-full transition">13</button>
+                    <button onclick="selecionarData(14)" class="py-2 hover:bg-purple-100 rounded-full transition">14</button>
+                    <button onclick="selecionarData(15)" class="py-2 hover:bg-purple-100 rounded-full transition">15</button>
+                    <button onclick="selecionarData(16)" class="py-2 hover:bg-purple-100 rounded-full transition">16</button>
+                    <button onclick="selecionarData(17)" class="py-2 hover:bg-purple-100 rounded-full transition">17</button>
+                    <button onclick="selecionarData(18)" class="py-2 hover:bg-purple-100 rounded-full transition">18</button>
+                    <button onclick="selecionarData(19)" class="py-2 hover:bg-purple-100 rounded-full transition">19</button>
                     
-                    <!-- Semana 4 (Dia 23 Selecionado) -->
-                    <span>20</span><span>21</span><span>22</span>
-                    <div class="flex flex-col items-center cursor-pointer">
-                        <span class="w-8 h-8 bg-teal-500 text-white rounded-full flex items-center justify-center font-bold">23</span>
-                        <span class="w-1.5 h-1.5 bg-slate-300 rounded-full mt-0.5"></span>
-                    </div>
-                    <div class="flex flex-col items-center cursor-pointer" onclick="selecionarData('24')"><span>24</span><span class="w-1.5 h-1.5 bg-slate-300 rounded-full mt-1"></span></div>
-                    <div class="flex flex-col items-center cursor-pointer" onclick="selecionarData('25')"><span>25</span><span class="w-1.5 h-1.5 bg-slate-300 rounded-full mt-1"></span></div>
-                    <div class="flex flex-col items-center cursor-pointer" onclick="selecionarData('26')"><span>26</span><span class="w-1.5 h-1.5 bg-slate-300 rounded-full mt-1"></span></div>
+                    <button onclick="selecionarData(20)" class="py-2 hover:bg-purple-100 rounded-full transition">20</button>
+                    <button onclick="selecionarData(21)" class="py-2 hover:bg-purple-100 rounded-full transition">21</button>
+                    <button onclick="selecionarData(22)" class="py-2 hover:bg-purple-100 rounded-full transition">22</button>
+                    <button onclick="selecionarData(23)" class="py-2 bg-teal-500 text-white rounded-full font-bold transition">23</button>
+                    <button onclick="selecionarData(24)" class="py-2 hover:bg-purple-100 rounded-full transition">24</button>
+                    <button onclick="selecionarData(25)" class="py-2 hover:bg-purple-100 rounded-full transition">25</button>
+                    <button onclick="selecionarData(26)" class="py-2 hover:bg-purple-100 rounded-full transition">26</button>
                     
-                    <!-- Semana 5 -->
-                    <span>27</span><span>28</span><span>29</span>
-                    <div class="flex flex-col items-center cursor-pointer" onclick="selecionarData('30')"><span>30</span><span class="w-1.5 h-1.5 bg-slate-300 rounded-full mt-1"></span></div>
-                    <span class="text-slate-300">1</span><span class="text-slate-300">2</span><span class="text-slate-300">3</span>
+                    <button onclick="selecionarData(27)" class="py-2 hover:bg-purple-100 rounded-full transition">27</button>
+                    <button onclick="selecionarData(28)" class="py-2 hover:bg-purple-100 rounded-full transition">28</button>
+                    <button onclick="selecionarData(29)" class="py-2 hover:bg-purple-100 rounded-full transition">29</button>
+                    <button onclick="selecionarData(30)" class="py-2 hover:bg-purple-100 rounded-full transition">30</button>
+                    <span class="text-slate-300 py-2">1</span>
+                    <span class="text-slate-300 py-2">2</span>
+                    <span class="text-slate-300 py-2">3</span>
                 </div>
 
-                <!-- Rodapé do Modal -->
                 <div class="flex items-center justify-between pt-4 border-t border-slate-100">
-                    <button onclick="toggleCalendarModal()" class="text-red-500 font-bold text-xs flex items-center space-x-1"><i class="fa-solid fa-circle-xmark"></i><span>Limpar</span></button>
+                    <button onclick="toggleCalendarModal()" class="text-red-500 font-bold text-xs">Limpar</button>
                     <button onclick="toggleCalendarModal()" class="bg-teal-500 text-white px-6 py-2 rounded-full font-bold text-xs shadow-md">Ok</button>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- Script de Gestão da Agenda e Calendário -->
+    <!-- Script de Gestão -->
     <script>
+        let diaAtualSelecionado = 23;
         const horarios = ["08:00", "09:00", "10:00", "11:00", "14:00", "15:00", "16:00", "20:00", "20:30", "21:00", "21:30", "22:00", "22:30", "23:00", "23:30"];
         
-        // Simulação de agendamentos por dia
-        const agendamentosPorDia = {
-            "23": [{ hora: "21:00", cliente: "Camila Souza", servico: "Aplicação de Mega Hair" }]
+        // Simulação de compromissos dinâmicos por dia
+        const baseAgendamentos = {
+            "23": [{ hora: "21:00", cliente: "Camila Souza", servico: "Aplicação de Mega Hair" }],
+            "15": [{ hora: "14:00", cliente: "Mariana Costa", servico: "Manutenção e Hidratação" }],
+            "10": [{ hora: "10:00", cliente: "Juliana Lima", servico: "Colocação de Fios" }]
         };
 
-        function renderizarAgenda(diaSelecionado = "23") {
+        function renderizarAgenda(dia) {
             const container = document.getElementById('grelha-horarios');
             container.innerHTML = "";
 
             horarios.forEach(h => {
-                const agendamentoDoHorario = (agendamentosPorDia[diaSelecionado] || []).find(a => a.hora === h);
-                
+                const agendamento = (baseAgendamentos[dia] || []).find(a => a.hora === h);
                 const linha = document.createElement('div');
                 linha.className = "flex items-center px-6 py-4 hover:bg-slate-50";
                 
-                if(agendamentoDoHorario) {
+                if(agendamento) {
                     linha.innerHTML = `
                         <span class="w-16 font-mono text-purple-700 font-bold">${h}</span>
                         <div class="flex-1 border-l border-purple-200 pl-4 bg-purple-50/50 p-2 rounded-lg flex justify-between items-center">
                             <div>
-                                <p class="font-bold text-slate-900">${agendamentoDoHorario.cliente}</p>
-                                <p class="text-[11px] text-purple-600">${agendamentoDoHorario.servico}</p>
+                                <p class="font-bold text-slate-900">${agendamento.cliente}</p>
+                                <p class="text-[11px] text-purple-600">${agendamento.servico}</p>
                             </div>
                             <span class="bg-emerald-100 text-emerald-800 text-[10px] font-bold px-2 py-0.5 rounded-full">Confirmado</span>
                         </div>
@@ -212,27 +214,36 @@
         }
 
         function selecionarData(dia) {
-            const diasSemana = { "23": "23/09/2026, quarta-feira", "16": "16/09/2026, quarta-feira", "1": "01/09/2026, terça-feira", "9": "09/09/2026, quarta-feira" };
-            document.getElementById('data-atual-label').innerText = diasSemana[dia] || `${dia}/09/2026`;
+            diaAtualSelecionado = dia;
+            const diasDaSemana = ['domingo', 'segunda-feira', 'terça-feira', 'quarta-feira', 'quinta-feira', 'sexta-feira', 'sábado'];
+            // Exemplo fixo base setembro 2026
+            const dataObj = new Date(2026, 8, dia);
+            const nomeDiaSemana = diasDaSemana[dataObj.getDay()];
+            
+            const diaFormatado = String(dia).padStart(2, '0');
+            document.getElementById('data-atual-label').innerText = `${diaFormatado}/09/2026, ${nomeDiaSemana}`;
+            
             renderizarAgenda(dia);
             toggleCalendarModal();
         }
 
         function mudarDia(delta) {
-            // Navegação simples de dia de exemplo
-            let diaAtual = parseInt(document.getElementById('data-atual-label').innerText.split('/')[0]);
-            let novoDia = String(diaAtual + delta);
-            selecionarData(novoDia);
+            let novoDia = diaAtualSelecionado + delta;
+            if(novoDia >= 1 && novoDia <= 30) {
+                selecionarData(novoDia);
+            }
         }
 
-        // Inicializa a grelha ao carregar
         document.addEventListener('DOMContentLoaded', () => {
-            renderizarAgenda("23");
+            renderizarAgenda(23);
         });
 
         function switchTab(tabName) {
-            if(tabName === 'agenda') return;
-            alert('Navegando para a aba: ' + tabName);
+            if(tabName === 'agenda') {
+                toggleSidebar();
+                return;
+            }
+            alert('Acessando aba: ' + tabName);
         }
     </script>
 </body>

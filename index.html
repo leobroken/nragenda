@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NRAgenda - Gestão Inteligente para Salões e Barbearias</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="bg-slate-50 text-slate-800 font-sans antialiased">
+
+    <!-- Header / Navbar -->
+    <header class="fixed top-0 left-0 right-0 bg-white/80 backdrop-blur-md border-b border-slate-100 z-50">
+        <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+            <div class="flex items-center space-x-2">
+                <div class="bg-indigo-600 text-white p-2.5 rounded-xl font-bold text-xl flex items-center justify-center shadow-lg shadow-indigo-200">
+                    <i class="fa-solid fa-scissors"></i>
+                </div>
+                <span class="text-2xl font-extrabold tracking-tight text-slate-900">NR<span class="text-indigo-600">Agenda</span></span>
+            </div>
+            <nav class="hidden md:flex items-center space-x-8 text-sm font-medium text-slate-600">
+                <a href="#recursos" class="hover:text-indigo-600 transition">Recursos</a>
+                <a href="#beneficios" class="hover:text-indigo-600 transition">Vantagens</a>
+                <a href="#precos" class="hover:text-indigo-600 transition">Planos</a>
+            </nav>
+            <div class="flex items-center space-x-4">
+                <a href="login.html" class="text-sm font-semibold text-slate-700 hover:text-indigo-600 px-4 py-2 transition">Entrar</a>
+                <a href="login.html?register=true" class="bg-indigo-600 hover:bg-indigo-700 text-white text-sm font-semibold px-5 py-2.5 rounded-xl shadow-md shadow-indigo-100 transition">Teste Grátis</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="pt-32 pb-20 md:pt-44 md:pb-32 overflow-hidden">
+        <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+            <div class="space-y-6">
+                <div class="inline-flex items-center space-x-2 bg-indigo-50 border border-indigo-100 px-3 py-1.5 rounded-full text-indigo-700 text-xs font-semibold">
+                    <i class="fa-solid fa-sparkles"></i>
+                    <span>A plataforma definitiva para profissionais da beleza</span>
+                </div>
+                <h1 class="text-4xl md:text-6xl font-black text-slate-900 tracking-tight leading-tight">
+                    Simplifique a gestão do seu <span class="text-indigo-600">Salão</span> ou <span class="text-indigo-600">Barbearia</span>.
+                </h1>
+                <p class="text-lg text-slate-600 leading-relaxed">
+                    Esqueça a agenda de papel. Com o NRAgenda você gerencia agendamentos online, controle completo de clientes, estoque de produtos e relatórios financeiros em um só lugar.
+                </p>
+                <div class="flex flex-col sm:flex-row items-center space-y-3 sm:space-y-0 sm:space-x-4 pt-4">
+                    <a href="login.html?register=true" class="w-full sm:w-auto text-center bg-indigo-600 hover:bg-indigo-700 text-white font-bold px-8 py-4 rounded-xl shadow-xl shadow-indigo-200 transition">
+                        Começar Gratuitamente <i class="fa-solid fa-arrow-right ml-2"></i>
+                    </a>
+                    <a href="#recursos" class="w-full sm:w-auto text-center bg-white hover:bg-slate-100 border border-slate-200 text-slate-700 font-bold px-6 py-4 rounded-xl transition">
+                        Ver Recursos
+                    </a>
+                </div>
+                <p class="text-xs text-slate-400">✨ Sem necessidade de cartão de crédito. Configuração em menos de 2 minutos.</p>
+            </div>
+            <div class="relative">
+                <div class="absolute -inset-1.5 bg-gradient-to-r from-indigo-500 to-purple-600 rounded-3xl blur-xl opacity-30 animate-pulse"></div>
+                <div class="relative bg-white border border-slate-100 rounded-3xl p-6 shadow-2xl">
+                    <div class="flex items-center justify-between pb-4 border-b border-slate-100">
+                        <div class="flex items-center space-x-2">
+                            <div class="w-3 h-3 bg-red-400 rounded-full"></div>
+                            <div class="w-3 h-3 bg-yellow-400 rounded-full"></div>
+                            <div class="w-3 h-3 bg-green-400 rounded-full"></div>
+                        </div>
+                        <span class="text-xs font-mono text-slate-400">nragenda.app/painel</span>
+                    </div>
+                    <div class="py-6 space-y-4">
+                        <div class="bg-indigo-50/60 p-4 rounded-2xl flex items-center justify-between">
+                            <div>
+                                <p class="text-xs text-indigo-600 font-bold uppercase">Agendamento de Hoje</p>
+                                <p class="text-base font-bold text-slate-800">Corte + Mega Hair (Natália)</p>
+                            </div>
+                            <span class="bg-emerald-100 text-emerald-800 text-xs font-bold px-3 py-1 rounded-full">Confirmado</span>
+                        </div>
+                        <div class="grid grid-cols-2 gap-4">
+                            <div class="bg-slate-50 p-4 rounded-2xl border border-slate-100">
+                                <p class="text-xs text-slate-500">Faturamento Hoje</p>
+                                <p class="text-xl font-black text-slate-900">R$ 840,00</p>
+                            </div>
+                            <div class="bg-slate-50 p-4 rounded-2xl border border-slate-100">
+                                <p class="text-xs text-slate-500">Clientes Atendidos</p>
+                                <p class="text-xl font-black text-slate-900">12</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Seção de Recursos Principais -->
+    <section id="recursos" class="py-20 bg-white border-t border-slate-100">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center max-w-2xl mx-auto space-y-4 mb-16">
+                <h2 class="text-3xl md:text-4xl font-black text-slate-900">Tudo o que seu salão precisa em um único ecossistema</h2>
+                <p class="text-slate-600">Criado sob medida para otimizar o seu tempo e escalar o seu faturamento.</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="bg-slate-50 border border-slate-100 p-8 rounded-3xl space-y-4 hover:border-indigo-200 transition">
+                    <div class="w-12 h-12 bg-indigo-100 text-indigo-600 rounded-2xl flex items-center justify-center font-bold text-xl">
+                        <i class="fa-solid fa-calendar-days"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-900">Agenda Inteligente</h3>
+                    <p class="text-sm text-slate-600 leading-relaxed">Organize horários por profissional, evite choques de horários e envie lembretes automáticos para os clientes.</p>
+                </div>
+                <div class="bg-slate-50 border border-slate-100 p-8 rounded-3xl space-y-4 hover:border-indigo-200 transition">
+                    <div class="w-12 h-12 bg-indigo-100 text-indigo-600 rounded-2xl flex items-center justify-center font-bold text-xl">
+                        <i class="fa-solid fa-users"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-900">Gestão de Clientes</h3>
+                    <p class="text-sm text-slate-600 leading-relaxed">Histórico completo de atendimentos, preferências, produtos comprados e frequência de visitas de cada cliente.</p>
+                </div>
+                <div class="bg-slate-50 border border-slate-100 p-8 rounded-3xl space-y-4 hover:border-indigo-200 transition">
+                    <div class="w-12 h-12 bg-indigo-100 text-indigo-600 rounded-2xl flex items-center justify-center font-bold text-xl">
+                        <i class="fa-solid fa-box-archive"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-900">Estoque & Produtos</h3>
+                    <p class="text-sm text-slate-600 leading-relaxed">Controle total de produtos de revenda ou uso interno (shampoos, óleos, acessórios) com alertas de reposição.</p>
+                </div>
+                <div class="bg-slate-50 border border-slate-100 p-8 rounded-3xl space-y-4 hover:border-indigo-200 transition">
+                    <div class="w-12 h-12 bg-indigo-100 text-indigo-600 rounded-2xl flex items-center justify-center font-bold text-xl">
+                        <i class="fa-solid fa-chart-line"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-900">Relatórios Mensais</h3>
+                    <p class="text-sm text-slate-600 leading-relaxed">Acompanhe fluxo de caixa, comissões de profissionais, serviços mais rentáveis e faturamento detalhado.</p>
+                </div>
+                <div class="bg-slate-50 border border-slate-100 p-8 rounded-3xl space-y-4 hover:border-indigo-200 transition">
+                    <div class="w-12 h-12 bg-indigo-100 text-indigo-600 rounded-2xl flex items-center justify-center font-bold text-xl">
+                        <i class="fa-solid fa-mobile-screen"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-900">100% Responsivo</h3>
+                    <p class="text-sm text-slate-600 leading-relaxed">Acesse de qualquer celular, tablet ou computador direto do navegador, sem instalações complexas.</p>
+                </div>
+                <div class="bg-slate-50 border border-slate-100 p-8 rounded-3xl space-y-4 hover:border-indigo-200 transition">
+                    <div class="w-12 h-12 bg-indigo-100 text-indigo-600 rounded-2xl flex items-center justify-center font-bold text-xl">
+                        <i class="fa-solid fa-shield-halved"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-900">Segurança de Dados</h3>
+                    <p class="text-sm text-slate-600 leading-relaxed">Dados salvos em nuvem com criptografia de ponta e backups automáticos diários garantidos.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-slate-900 text-slate-400 py-12 border-t border-slate-800">
+        <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between space-y-4 md:space-y-0">
+            <div class="flex items-center space-x-2">
+                <div class="bg-indigo-600 text-white p-2 rounded-lg font-bold text-sm">
+                    <i class="fa-solid fa-scissors"></i>
+                </div>
+                <span class="text-lg font-bold text-white">NRAgenda</span>
+            </div>
+            <p class="text-sm">© 2026 NRAgenda. Todos os direitos reservados.</p>
+            <div class="flex space-x-6 text-sm">
+                <a href="#" class="hover:text-white transition">Termos</a>
+                <a href="#" class="hover:text-white transition">Privacidade</a>
+                <a href="#" class="hover:text-white transition">Suporte</a>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
+
